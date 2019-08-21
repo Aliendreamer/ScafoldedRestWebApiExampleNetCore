@@ -1,0 +1,1476 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "",
+    "version" : "2.4.0",
+    "title" : "CustomerManagement"
+  },
+  "host" : "serverRoot",
+  "basePath" : "/customerManagement",
+  "schemes" : [ "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/customer" : {
+      "get" : {
+        "tags" : [ "customer" ],
+        "summary" : "List or find 'Customer' objects",
+        "operationId" : "listCustomer",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "token to be passed as a header linked to the user whose identity is requested",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Comma separated properties to display in response",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Requested index for start of resources to be provided in response",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Requested number of resources to be provided in response",
+          "required" : false,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Customer"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "405" : {
+            "description" : "Method Not allowed",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "customer" ],
+        "summary" : "Creates a 'Customer'",
+        "operationId" : "createCustomer",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "token to be passed as a header linked to the user whose identity is requested",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "customer",
+          "description" : "The Customer to be created",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Customer_Create"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "$ref" : "#/definitions/Customer"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "405" : {
+            "description" : "Method Not allowed",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/customer/{id}" : {
+      "get" : {
+        "tags" : [ "customer" ],
+        "summary" : "Retrieves a 'Customer' by Id",
+        "operationId" : "retrieveCustomer",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "token to be passed as a header linked to the user whose identity is requested",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Identifier of the Customer",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Customer"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "405" : {
+            "description" : "Method Not allowed",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "customer" ],
+        "summary" : "Updates partially a 'Customer' by Id",
+        "operationId" : "patchCustomer",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "token to be passed as a header linked to the user whose identity is requested",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Identifier of the Customer",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "customer",
+          "description" : "The Customer to be updated",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Customer_Update"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Updated",
+            "schema" : {
+              "$ref" : "#/definitions/Customer"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "405" : {
+            "description" : "Method Not allowed",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/customer/{id}/paymentMethod" : {
+      "patch" : {
+        "tags" : [ "paymentMethod" ],
+        "summary" : "Updates paymentMethod of a 'Customer' by Id",
+        "operationId" : "patchCustomerPaymentMethod",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "token to be passed as a header linked to the user whose identity is requested",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Identifier of the Customer",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "PaymentMethodRef",
+          "description" : "PaymentMethodRef",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/PaymentMethodRef"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Updated",
+            "schema" : {
+              "$ref" : "#/definitions/PaymentMethodRef"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "405" : {
+            "description" : "Method Not allowed",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/customer/{id}/contactMedium" : {
+      "patch" : {
+        "tags" : [ "contactMedium" ],
+        "summary" : "Updates contactMedium of a 'Customer' by Id",
+        "operationId" : "patchCustomerContactMedium",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "token to be passed as a header linked to the user whose identity is requested",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Identifier of the Customer",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "ContactMedium",
+          "description" : "ContactMedium",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ContactMedium"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Updated",
+            "schema" : {
+              "$ref" : "#/definitions/ContactMedium"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "405" : {
+            "description" : "Method Not allowed",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Individual" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "givenName" : {
+          "type" : "string"
+        },
+        "familyName" : {
+          "type" : "string"
+        },
+        "middleName" : {
+          "type" : "string"
+        },
+        "href" : {
+          "type" : "string"
+        },
+        "gender" : {
+          "type" : "string"
+        },
+        "placeOfBirth" : {
+          "type" : "string"
+        },
+        "countryOfBirth" : {
+          "type" : "string"
+        },
+        "nationality" : {
+          "type" : "string"
+        },
+        "maritalStatus" : {
+          "type" : "string"
+        },
+        "birthDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "fullName" : {
+          "type" : "string"
+        },
+        "formattedName" : {
+          "type" : "string"
+        },
+        "location" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "placeOfBirth" : "placeOfBirth",
+        "gender" : "gender",
+        "givenName" : "givenName",
+        "formattedName" : "formattedName",
+        "fullName" : "fullName",
+        "title" : "title",
+        "birthDate" : "2000-01-23T04:56:07.000+00:00",
+        "nationality" : "nationality",
+        "countryOfBirth" : "countryOfBirth",
+        "familyName" : "familyName",
+        "middleName" : "middleName",
+        "location" : "location",
+        "id" : "id",
+        "href" : "href",
+        "maritalStatus" : "maritalStatus",
+        "status" : "status"
+      }
+    },
+    "Organization" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "tradingName" : {
+          "type" : "string"
+        },
+        "href" : {
+          "type" : "string"
+        },
+        "isLegalEntity" : {
+          "type" : "string"
+        },
+        "organizationType" : {
+          "type" : "string"
+        },
+        "nameType" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "tradingName" : "tradingName",
+        "organizationType" : "organizationType",
+        "nameType" : "nameType",
+        "isLegalEntity" : "isLegalEntity",
+        "id" : "id",
+        "href" : "href",
+        "status" : "status"
+      }
+    },
+    "Customer" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "href" : {
+          "type" : "string",
+          "description" : "Url used to reference the party role."
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "Unique identifier for PartyRoles"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "A word, term, or phrase by which the PartyRole is known and distinguished from other PartyRoles."
+        },
+        "status" : {
+          "type" : "string",
+          "description" : "Used to track the lifecycle status of the party role."
+        },
+        "statusReason" : {
+          "type" : "string",
+          "description" : "A string providing an explanation on the value of the status lifecycle. For instance if the status is Rejected, statusReason will provide the reason for rejection."
+        },
+        "preferredLanguage" : {
+          "type" : "string",
+          "description" : "Customer's preferent language"
+        },
+        "validFor" : {
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "engagedParty" : {
+          "$ref" : "#/definitions/PartyRef"
+        },
+        "partyRoleType" : {
+          "$ref" : "#/definitions/RoleTypeRef"
+        },
+        "account" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AccountRef"
+          }
+        },
+        "paymentMethod" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PaymentMethodRef"
+          }
+        },
+        "contactMedium" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ContactMedium"
+          }
+        },
+        "characteristic" : {
+          "type" : "array",
+          "description" : "Describes the characteristic of a party role.",
+          "items" : {
+            "$ref" : "#/definitions/Characteristic"
+          }
+        },
+        "creditProfile" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/CreditProfile"
+          }
+        },
+        "agreement" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AgreementRef"
+          }
+        },
+        "relatedParty" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RelatedPartyRef"
+          }
+        }
+      },
+      "example" : {
+        "preferredLanguage" : "preferredLanguage",
+        "contactMedium" : [ {
+          "contactMediumType" : "emailAddress",
+          "validFor" : {
+            "startDateTime" : "2000-01-23T04:56:07.000+00:00",
+            "endDateTime" : "2000-01-23T04:56:07.000+00:00"
+          },
+          "preferred" : true,
+          "characteristic" : {
+            "country" : "country",
+            "emailAddress" : "emailAddress",
+            "mediumCharacteristicType" : "mediumCharacteristicType",
+            "phoneNumber" : "phoneNumber",
+            "stateOrProvince" : "stateOrProvince",
+            "city" : "city",
+            "faxNumber" : "faxNumber",
+            "postCode" : "postCode",
+            "street1" : "street1",
+            "street2" : "street2"
+          }
+        }, {
+          "contactMediumType" : "emailAddress",
+          "validFor" : {
+            "startDateTime" : "2000-01-23T04:56:07.000+00:00",
+            "endDateTime" : "2000-01-23T04:56:07.000+00:00"
+          },
+          "preferred" : true,
+          "characteristic" : {
+            "country" : "country",
+            "emailAddress" : "emailAddress",
+            "mediumCharacteristicType" : "mediumCharacteristicType",
+            "phoneNumber" : "phoneNumber",
+            "stateOrProvince" : "stateOrProvince",
+            "city" : "city",
+            "faxNumber" : "faxNumber",
+            "postCode" : "postCode",
+            "street1" : "street1",
+            "street2" : "street2"
+          }
+        } ],
+        "creditProfile" : [ {
+          "creditProfileDate" : "2000-01-23T04:56:07.000+00:00",
+          "creditScore" : "creditScore",
+          "tagCreditOnHold" : "tagCreditOnHold",
+          "validFor" : {
+            "startDateTime" : "2000-01-23T04:56:07.000+00:00",
+            "endDateTime" : "2000-01-23T04:56:07.000+00:00"
+          },
+          "tagCreditScoring" : "tagCreditScoring",
+          "tagContractDailyCreditLimit" : "tagContractDailyCreditLimit",
+          "creditRiskRating" : "creditRiskRating",
+          "tagCreditLimit" : 0,
+          "tagCreditThreshold" : "tagCreditThreshold",
+          "tagContractPeriodicCreditLimit" : "tagContractPeriodicCreditLimit"
+        }, {
+          "creditProfileDate" : "2000-01-23T04:56:07.000+00:00",
+          "creditScore" : "creditScore",
+          "tagCreditOnHold" : "tagCreditOnHold",
+          "validFor" : {
+            "startDateTime" : "2000-01-23T04:56:07.000+00:00",
+            "endDateTime" : "2000-01-23T04:56:07.000+00:00"
+          },
+          "tagCreditScoring" : "tagCreditScoring",
+          "tagContractDailyCreditLimit" : "tagContractDailyCreditLimit",
+          "creditRiskRating" : "creditRiskRating",
+          "tagCreditLimit" : 0,
+          "tagCreditThreshold" : "tagCreditThreshold",
+          "tagContractPeriodicCreditLimit" : "tagContractPeriodicCreditLimit"
+        } ],
+        "agreement" : [ {
+          "name" : "name",
+          "href" : "href",
+          "id" : "id"
+        }, {
+          "name" : "name",
+          "href" : "href",
+          "id" : "id"
+        } ],
+        "validFor" : {
+          "startDateTime" : "2000-01-23T04:56:07.000+00:00",
+          "endDateTime" : "2000-01-23T04:56:07.000+00:00"
+        },
+        "partyRoleType" : {
+          "partnershipId" : "partnershipId",
+          "name" : "name",
+          "partnershipName" : "partnershipName",
+          "partnershipHref" : "partnershipHref"
+        },
+        "relatedParty" : [ {
+          "role" : "role",
+          "name" : "name",
+          "href" : "href",
+          "id" : "id"
+        }, {
+          "role" : "role",
+          "name" : "name",
+          "href" : "href",
+          "id" : "id"
+        } ],
+        "characteristic" : [ {
+          "name" : "name",
+          "value" : "value"
+        }, {
+          "name" : "name",
+          "value" : "value"
+        } ],
+        "statusReason" : "statusReason",
+        "name" : "name",
+        "paymentMethod" : [ {
+          "name" : "name",
+          "href" : "href",
+          "id" : "id"
+        }, {
+          "name" : "name",
+          "href" : "href",
+          "id" : "id"
+        } ],
+        "href" : "href",
+        "id" : "id",
+        "engagedParty" : {
+          "individual" : [ {
+            "placeOfBirth" : "placeOfBirth",
+            "gender" : "gender",
+            "givenName" : "givenName",
+            "formattedName" : "formattedName",
+            "fullName" : "fullName",
+            "title" : "title",
+            "birthDate" : "2000-01-23T04:56:07.000+00:00",
+            "nationality" : "nationality",
+            "countryOfBirth" : "countryOfBirth",
+            "familyName" : "familyName",
+            "middleName" : "middleName",
+            "location" : "location",
+            "id" : "id",
+            "href" : "href",
+            "maritalStatus" : "maritalStatus",
+            "status" : "status"
+          }, {
+            "placeOfBirth" : "placeOfBirth",
+            "gender" : "gender",
+            "givenName" : "givenName",
+            "formattedName" : "formattedName",
+            "fullName" : "fullName",
+            "title" : "title",
+            "birthDate" : "2000-01-23T04:56:07.000+00:00",
+            "nationality" : "nationality",
+            "countryOfBirth" : "countryOfBirth",
+            "familyName" : "familyName",
+            "middleName" : "middleName",
+            "location" : "location",
+            "id" : "id",
+            "href" : "href",
+            "maritalStatus" : "maritalStatus",
+            "status" : "status"
+          } ],
+          "partyRefType" : "Individual",
+          "organization" : [ {
+            "tradingName" : "tradingName",
+            "organizationType" : "organizationType",
+            "nameType" : "nameType",
+            "isLegalEntity" : "isLegalEntity",
+            "id" : "id",
+            "href" : "href",
+            "status" : "status"
+          }, {
+            "tradingName" : "tradingName",
+            "organizationType" : "organizationType",
+            "nameType" : "nameType",
+            "isLegalEntity" : "isLegalEntity",
+            "id" : "id",
+            "href" : "href",
+            "status" : "status"
+          } ],
+          "name" : "name",
+          "description" : "description",
+          "href" : "href",
+          "id" : "id"
+        },
+        "account" : [ {
+          "name" : "name",
+          "description" : "description",
+          "href" : "href",
+          "id" : "id"
+        }, {
+          "name" : "name",
+          "description" : "description",
+          "href" : "href",
+          "id" : "id"
+        } ],
+        "status" : "status"
+      }
+    },
+    "Customer_Create" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "A word, term, or phrase by which the PartyRole is known and distinguished from other PartyRoles."
+        },
+        "status" : {
+          "type" : "string",
+          "description" : "Used to track the lifecycle status of the party role."
+        },
+        "statusReason" : {
+          "type" : "string",
+          "description" : "A string providing an explanation on the value of the status lifecycle. For instance if the status is Rejected, statusReason will provide the reason for rejection."
+        },
+        "validFor" : {
+          "description" : "The time period that the PartyRole is valid for.",
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "engagedParty" : {
+          "$ref" : "#/definitions/PartyRef"
+        },
+        "partyRoleType" : {
+          "description" : "The role type - useful only in the context of a partnership defining more than one role type.",
+          "$ref" : "#/definitions/RoleTypeRef"
+        },
+        "account" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AccountRef"
+          }
+        },
+        "paymentMethod" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PaymentMethodRef"
+          }
+        },
+        "contactMedium" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ContactMedium"
+          }
+        },
+        "characteristic" : {
+          "type" : "array",
+          "description" : "Describes the characteristic of a party role.",
+          "items" : {
+            "$ref" : "#/definitions/Characteristic"
+          }
+        },
+        "creditProfile" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/CreditProfile"
+          }
+        },
+        "agreement" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AgreementRef"
+          }
+        },
+        "relatedParty" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RelatedPartyRef"
+          }
+        }
+      },
+      "description" : "\nSkipped properties: id,href"
+    },
+    "Customer_Update" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "A word, term, or phrase by which the PartyRole is known and distinguished from other PartyRoles."
+        },
+        "status" : {
+          "type" : "string",
+          "description" : "Used to track the lifecycle status of the party role."
+        },
+        "statusReason" : {
+          "type" : "string",
+          "description" : "A string providing an explanation on the value of the status lifecycle. For instance if the status is Rejected, statusReason will provide the reason for rejection."
+        },
+        "validFor" : {
+          "description" : "The time period that the PartyRole is valid for.",
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "engagedParty" : {
+          "$ref" : "#/definitions/PartyRef"
+        },
+        "partyRoleType" : {
+          "description" : "The role type - useful only in the context of a partnership defining more than one role type.",
+          "$ref" : "#/definitions/RoleTypeRef"
+        },
+        "account" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AccountRef"
+          }
+        },
+        "characteristic" : {
+          "type" : "array",
+          "description" : "Describes the characteristic of a party role.",
+          "items" : {
+            "$ref" : "#/definitions/Characteristic"
+          }
+        },
+        "creditProfile" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/CreditProfile"
+          }
+        },
+        "agreement" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AgreementRef"
+          }
+        },
+        "relatedParty" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RelatedPartyRef"
+          }
+        }
+      },
+      "description" : "Skipped properties: id,href,id,href"
+    },
+    "TimePeriod" : {
+      "type" : "object",
+      "properties" : {
+        "endDateTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "An instant of time, ending at the TimePeriod."
+        },
+        "startDateTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "An instant of time, starting at the TimePeriod"
+        }
+      },
+      "description" : "A base / value business entity used to represent a period of time between two timepoints.",
+      "example" : {
+        "startDateTime" : "2000-01-23T04:56:07.000+00:00",
+        "endDateTime" : "2000-01-23T04:56:07.000+00:00"
+      }
+    },
+    "PartyRef" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "partyRefType" : {
+          "type" : "string",
+          "description" : "Generic attribute indicating the name of the class type of the referred resource entity.",
+          "enum" : [ "Individual", "Organization" ]
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "Text describing the referred party"
+        },
+        "href" : {
+          "type" : "string",
+          "description" : "Reference of the referred party (such as a partner or any other party role)."
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "Unique identifier of the referred party"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the referred party (such as a partner or any other party role)"
+        },
+        "individual" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Individual"
+          }
+        },
+        "organization" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Organization"
+          }
+        }
+      },
+      "description" : "Party reference. A party represents an organization or an individual.",
+      "example" : {
+        "individual" : [ {
+          "placeOfBirth" : "placeOfBirth",
+          "gender" : "gender",
+          "givenName" : "givenName",
+          "formattedName" : "formattedName",
+          "fullName" : "fullName",
+          "title" : "title",
+          "birthDate" : "2000-01-23T04:56:07.000+00:00",
+          "nationality" : "nationality",
+          "countryOfBirth" : "countryOfBirth",
+          "familyName" : "familyName",
+          "middleName" : "middleName",
+          "location" : "location",
+          "id" : "id",
+          "href" : "href",
+          "maritalStatus" : "maritalStatus",
+          "status" : "status"
+        }, {
+          "placeOfBirth" : "placeOfBirth",
+          "gender" : "gender",
+          "givenName" : "givenName",
+          "formattedName" : "formattedName",
+          "fullName" : "fullName",
+          "title" : "title",
+          "birthDate" : "2000-01-23T04:56:07.000+00:00",
+          "nationality" : "nationality",
+          "countryOfBirth" : "countryOfBirth",
+          "familyName" : "familyName",
+          "middleName" : "middleName",
+          "location" : "location",
+          "id" : "id",
+          "href" : "href",
+          "maritalStatus" : "maritalStatus",
+          "status" : "status"
+        } ],
+        "partyRefType" : "Individual",
+        "organization" : [ {
+          "tradingName" : "tradingName",
+          "organizationType" : "organizationType",
+          "nameType" : "nameType",
+          "isLegalEntity" : "isLegalEntity",
+          "id" : "id",
+          "href" : "href",
+          "status" : "status"
+        }, {
+          "tradingName" : "tradingName",
+          "organizationType" : "organizationType",
+          "nameType" : "nameType",
+          "isLegalEntity" : "isLegalEntity",
+          "id" : "id",
+          "href" : "href",
+          "status" : "status"
+        } ],
+        "name" : "name",
+        "description" : "description",
+        "href" : "href",
+        "id" : "id"
+      }
+    },
+    "RoleTypeRef" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "The name of the role type. It uniquely identifies the role type within the partnership type."
+        },
+        "partnershipHref" : {
+          "type" : "string",
+          "description" : "Reference url of the partnership type containing the role type"
+        },
+        "partnershipId" : {
+          "type" : "string",
+          "description" : "The identifier of the partnership type containing the role type"
+        },
+        "partnershipName" : {
+          "type" : "string",
+          "description" : "The name of the partnership type defining this role type"
+        }
+      },
+      "description" : "RoleType reference.",
+      "example" : {
+        "partnershipId" : "partnershipId",
+        "name" : "name",
+        "partnershipName" : "partnershipName",
+        "partnershipHref" : "partnershipHref"
+      }
+    },
+    "AccountRef" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "description" : {
+          "type" : "string",
+          "description" : "Detailed description of the account"
+        },
+        "href" : {
+          "type" : "string",
+          "description" : "Reference of the account"
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "Unique identifier of the account"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the account"
+        }
+      },
+      "description" : "Account reference. A account may be a party account or a financial account.",
+      "example" : {
+        "name" : "name",
+        "description" : "description",
+        "href" : "href",
+        "id" : "id"
+      }
+    },
+    "PaymentMethodRef" : {
+      "type" : "object",
+      "required" : [ "href", "id" ],
+      "properties" : {
+        "href" : {
+          "type" : "string",
+          "description" : "Reference of the payment mean"
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "Unique identifier of the payment mean"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the payment mean"
+        }
+      },
+      "description" : "PaymentMethod reference. A payment method defines a specific mean of payment (e.g direct debit).",
+      "example" : {
+        "name" : "name",
+        "href" : "href",
+        "id" : "id"
+      }
+    },
+    "ContactMedium" : {
+      "type" : "object",
+      "required" : [ "characteristic", "contactMediumType" ],
+      "properties" : {
+        "preferred" : {
+          "type" : "boolean",
+          "description" : "If true, indicates that is the preferred contact medium"
+        },
+        "contactMediumType" : {
+          "type" : "string",
+          "description" : "Type of the contact medium, such as: email address, telephone number, postal address",
+          "enum" : [ "emailAddress", "phone", "postalAddress", "fax", "any" ]
+        },
+        "validFor" : {
+          "description" : "The time period that the contact medium is valid for",
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "characteristic" : {
+          "$ref" : "#/definitions/MediumCharacteristic"
+        }
+      },
+      "description" : "Indicates the contact medium that could be used to contact the party.",
+      "example" : {
+        "contactMediumType" : "emailAddress",
+        "validFor" : {
+          "startDateTime" : "2000-01-23T04:56:07.000+00:00",
+          "endDateTime" : "2000-01-23T04:56:07.000+00:00"
+        },
+        "preferred" : true,
+        "characteristic" : {
+          "country" : "country",
+          "emailAddress" : "emailAddress",
+          "mediumCharacteristicType" : "mediumCharacteristicType",
+          "phoneNumber" : "phoneNumber",
+          "stateOrProvince" : "stateOrProvince",
+          "city" : "city",
+          "faxNumber" : "faxNumber",
+          "postCode" : "postCode",
+          "street1" : "street1",
+          "street2" : "street2"
+        }
+      }
+    },
+    "Characteristic" : {
+      "type" : "object",
+      "required" : [ "name", "value" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the characteristic"
+        },
+        "value" : {
+          "type" : "string",
+          "description" : "The value of the characteristic provided as a string."
+        }
+      },
+      "description" : "Describes a given characteristic of an object or entity through a name/value pair.",
+      "example" : {
+        "name" : "name",
+        "value" : "value"
+      }
+    },
+    "CreditProfile" : {
+      "type" : "object",
+      "required" : [ "creditProfileDate", "validFor" ],
+      "properties" : {
+        "creditProfileDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The date the profile was established"
+        },
+        "creditRiskRating" : {
+          "type" : "string",
+          "description" : "This is an integer\\string whose value is used to rate the risk"
+        },
+        "creditScore" : {
+          "type" : "string",
+          "description" : "A measure of a person's or an organization's creditworthiness calculated on the basis of a combination of factors such as their income and credit history."
+        },
+        "validFor" : {
+          "description" : "The period for which the profile is valid",
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "tagCreditScoring" : {
+          "type" : "string",
+          "description" : "description of persons credit worthiness"
+        },
+        "tagCreditLimit" : {
+          "type" : "integer",
+          "description" : "credit limit"
+        },
+        "tagCreditThreshold" : {
+          "type" : "string",
+          "description" : "account credit threshold"
+        },
+        "tagCreditOnHold" : {
+          "type" : "string",
+          "description" : "The date the profile was established"
+        },
+        "tagContractDailyCreditLimit" : {
+          "type" : "string",
+          "description" : "daily credit limit second contract"
+        },
+        "tagContractPeriodicCreditLimit" : {
+          "type" : "string",
+          "description" : "Periodic credit limit second contract"
+        }
+      },
+      "description" : "Credit profile for the party (containing credit scoring, ...). By default only the current credit profile  is retrieved. It can be used as a list to give the party credit profiles history, the first one in the list will be the current one.",
+      "example" : {
+        "creditProfileDate" : "2000-01-23T04:56:07.000+00:00",
+        "creditScore" : "creditScore",
+        "tagCreditOnHold" : "tagCreditOnHold",
+        "validFor" : {
+          "startDateTime" : "2000-01-23T04:56:07.000+00:00",
+          "endDateTime" : "2000-01-23T04:56:07.000+00:00"
+        },
+        "tagCreditScoring" : "tagCreditScoring",
+        "tagContractDailyCreditLimit" : "tagContractDailyCreditLimit",
+        "creditRiskRating" : "creditRiskRating",
+        "tagCreditLimit" : 0,
+        "tagCreditThreshold" : "tagCreditThreshold",
+        "tagContractPeriodicCreditLimit" : "tagContractPeriodicCreditLimit"
+      }
+    },
+    "AgreementRef" : {
+      "type" : "object",
+      "properties" : {
+        "href" : {
+          "type" : "string",
+          "description" : "Reference of the agreement"
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "Identifier of the agreement"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the agreement"
+        }
+      },
+      "description" : "Agreement reference. An agreement represents a contract or arrangement, either written or verbal and sometimes enforceable by law, such as a service level agreement or a customer price agreement. An agreement involves a number of other business entities, such as products, services, and resources and/or their specifications.",
+      "example" : {
+        "name" : "name",
+        "href" : "href",
+        "id" : "id"
+      }
+    },
+    "RelatedPartyRef" : {
+      "type" : "object",
+      "properties" : {
+        "href" : {
+          "type" : "string",
+          "description" : "Reference of the related party, could be a party reference or a party role reference"
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "Unique identifier of a related party"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the related party"
+        },
+        "role" : {
+          "type" : "string",
+          "description" : "Role of the related party."
+        }
+      },
+      "description" : "RelatedParty reference. A related party defines party or party role linked to a specific entity.",
+      "example" : {
+        "role" : "role",
+        "name" : "name",
+        "href" : "href",
+        "id" : "id"
+      }
+    },
+    "MediumCharacteristic" : {
+      "type" : "object",
+      "properties" : {
+        "city" : {
+          "type" : "string",
+          "description" : "The city"
+        },
+        "country" : {
+          "type" : "string",
+          "description" : "The country"
+        },
+        "emailAddress" : {
+          "type" : "string",
+          "description" : "Full email address in standard format"
+        },
+        "faxNumber" : {
+          "type" : "string",
+          "description" : "The fax number of the contact"
+        },
+        "phoneNumber" : {
+          "type" : "string",
+          "description" : "The primary phone number of the contact"
+        },
+        "postCode" : {
+          "type" : "string",
+          "description" : "Postcode"
+        },
+        "stateOrProvince" : {
+          "type" : "string",
+          "description" : "State or province"
+        },
+        "street1" : {
+          "type" : "string",
+          "description" : "Describes the street"
+        },
+        "street2" : {
+          "type" : "string",
+          "description" : "Complementary street description"
+        },
+        "mediumCharacteristicType" : {
+          "type" : "string",
+          "description" : "Type of medium (fax, mobile phone...)"
+        }
+      },
+      "description" : "Describes the contact medium characteristics that could be used to contact a party (an individual or an organization)",
+      "example" : {
+        "country" : "country",
+        "emailAddress" : "emailAddress",
+        "mediumCharacteristicType" : "mediumCharacteristicType",
+        "phoneNumber" : "phoneNumber",
+        "stateOrProvince" : "stateOrProvince",
+        "city" : "city",
+        "faxNumber" : "faxNumber",
+        "postCode" : "postCode",
+        "street1" : "street1",
+        "street2" : "street2"
+      }
+    },
+    "EventSubscription" : {
+      "required" : [ "callback", "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "description" : "Id of the listener"
+        },
+        "callback" : {
+          "type" : "string",
+          "description" : "The callback being registered."
+        },
+        "query" : {
+          "type" : "string",
+          "description" : "additional data to be passed"
+        }
+      }
+    },
+    "EventSubscriptionInput" : {
+      "required" : [ "callback" ],
+      "properties" : {
+        "callback" : {
+          "type" : "string",
+          "description" : "The callback being registered."
+        },
+        "query" : {
+          "type" : "string",
+          "description" : "additional data to be passed"
+        }
+      }
+    },
+    "Error" : {
+      "required" : [ "code", "message" ],
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "description" : "An integer coding the error type. This is given to caller so he can translate them if required."
+        },
+        "message" : {
+          "type" : "string",
+          "description" : "A short localized string that describes the error."
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "(optional) A long localized error description if needed. It can contain precise information about which parameter is missing, or what are the identifier acceptable values."
+        },
+        "infoURL" : {
+          "type" : "string",
+          "description" : "(optional) A URL to online documentation that provides more information about the error."
+        }
+      }
+    }
+  }
+}
